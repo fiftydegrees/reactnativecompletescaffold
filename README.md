@@ -96,3 +96,9 @@ Blabla
 ### Fastlane Setup
 
 ## Troubleshoots
+
+**[iOS] Error 65**
+This error can occur in many different situations. The most common fix you would better try first is to completely remove build folder `ios/build`, then re-run `npm run ios-dev`.
+
+**The app crashes on launch without any additional log.**
+This may occur when Firebase tries to instantiate but cannot find configuration files. Refer to the related section and check whether config files are loaded as expected.
