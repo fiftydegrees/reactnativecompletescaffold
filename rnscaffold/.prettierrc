@@ -1,0 +1,10 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "useTabs": false,
+  "trailingComma": "es5",
+  "ordered-imports": true,
+  "import-sources-order": "lowercase-last"
+}
