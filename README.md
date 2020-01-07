@@ -43,6 +43,12 @@ This is a pain in the ass to rename project files, structure and directories, so
 
 Default is `com.rnscaffold`. You can change it by following the steps described in this [StackOverflow answer](https://stackoverflow.com/a/44481467/1809893).
 
+**To know: for dev and staging environments, a suffix (.dev/.staging) is applied to your bundle identifier to allow multiple versions to be installed on a single device.**
+
+##### iOS
+
+When editing `Info.plist`, you can notice a `$(BUNDLE_SUFFIX)` appended to the initial identifier: keep it in place to enable suffix mechanism described above.
+
 #### Change app display name
 
 ##### iOS
@@ -51,11 +57,21 @@ Open `ios/rnscaffold/Info.plist` and edit the value associated with `CFBundleDis
 
 ##### Android
 
-Open `android/app/src/main/res/values/strings.xml` and change the `app_name` string value (default is `RN Scaffold`).
+As we're using product flavors to handle environments, open `android/app/build.gradle` and change the `app_name` string value for each product flavor (default is `{Dev/Staging} RN Scaffold`).
 
 #### Apply changes
 
 Delete the app from the target simulator and re-run `npm run ios-dev` or `npm run android-dev`.
+
+### Set Signing Identities
+
+#### iOS
+
+You can visit the [Apple Developer portal](https://developer.apple.com/) to setup signing certificates, or use automatic signing right in Xcode. Also, you can use Fastlane to generate certificates, please see dedicated section.
+
+#### Android
+
+Follow [instructions here](https://s-pace.github.io/react-native/docs/signed-apk-android.html) on how to generate a signing key. Add your release keystore in the `android/app` directory, then open `android/gradle.properties` and add your own values in the last section (key names start with \_RELEASE\_\_).
 
 ## How To
 
@@ -119,6 +135,23 @@ You can edit values in `.env` (development), `.env.staging` (staging) and `.env.
 Each time you want to switch environment, you need to re-run the app from scratch (such as `npm run ios-dev`), not just restart the packager.
 
 ### Fastlane Setup
+
+## Scripts Available
+
+Scripts can be executed through npm using `npm run {scriptName}`.
+
+```
+"ios-dev":  // Run the dev version on iOS simulator
+"android-dev":  // Run the dev version on Android simulator
+"ios-staging":  // Run the staging version on iOS simulator
+"android-staging":  // Run the staging version on Android simulator
+"ios-production":  // Run the production version on iOS simulator
+"android-production":  // Run the production version on Android simulator
+"assemble-android-dev":  // Assemble a debug build with dev version on Android
+"assemble-android-staging":  // Assemble a debug build with staging version on Android
+"assemble-android-production":  // Assemble a release build with production version on Android
+"start":  // Starts the React Native packager
+```
 
 ## Troubleshoots
 
