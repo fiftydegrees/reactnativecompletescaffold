@@ -61,7 +61,7 @@ Delete the app from the target simulator and re-run `npm run ios-dev` or `npm ru
 
 ### React Navigation
 
-The scaffold is completely empty. You can add your own routing using the included React Navigation library; documentation can be found [here](https://reactnavigation.org/docs/en/getting-started.html).
+The scaffold is completely empty, there's a single view as entry point. You can add your own routing using the included React Navigation library; documentation can be found [here](https://reactnavigation.org/docs/en/getting-started.html).
 
 ### Firebase Setup
 
@@ -91,7 +91,32 @@ The scaffold includes Analytics and Messaging integrations. Feel free to add any
 
 ### react-native-config usage
 
-Blabla
+This library allows to handle multiple environments. Official documentation can be found [here](https://github.com/luggit/react-native-config).
+
+#### Usage
+
+The scaffold comes with built-in environments: dev, staging and production, and associated npm scripts. You can switch environment using the following:
+
+```
+npm run {ios/android}-{dev/staging/production}
+```
+
+To use values, simply import the library:
+
+```
+import env from  'react-native-config';
+<Text>Current env. is: {env.ENVIRONMENT}</Text>
+```
+
+You can find an example in `App.js`.
+
+#### Customize
+
+You can edit values in `.env` (development), `.env.staging` (staging) and `.env.production` (production) environment. Default is a single value `ENVIRONMENT` containing the environment name.
+
+#### Switch environment
+
+Each time you want to switch environment, you need to re-run the app from scratch (such as `npm run ios-dev`), not just restart the packager.
 
 ### Fastlane Setup
 

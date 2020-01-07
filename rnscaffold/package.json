@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android-dev": "react-native run-android",
-    "ios-dev": "react-native run-ios",
+    "ios-dev": "ENVFILE=.env react-native run-ios",
+    "android-dev": "ENVFILE=.env react-native run-android",
+    "ios-staging": "ENVFILE=.env.staging react-native run-ios",
+    "android-staging": "ENVFILE=.env.staging react-native run-android",
+    "ios-production": "ENVFILE=.env.production react-native run-ios",
+    "android-production": "ENVFILE=.env.production react-native run-android",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
@@ -15,6 +19,7 @@
     "@react-native-firebase/messaging": "^6.2.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-config": "^0.12.0",
     "react-native-gesture-handler": "^1.5.3",
     "react-native-reanimated": "^1.4.0",
     "react-native-safe-area-context": "^0.6.2",
