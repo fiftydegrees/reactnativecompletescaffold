@@ -3,14 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "ios-dev": "ENVFILE=.env react-native run-ios",
-    "android-dev": "ENVFILE=.env react-native run-android",
-    "ios-staging": "ENVFILE=.env.staging react-native run-ios",
-    "android-staging": "ENVFILE=.env.staging react-native run-android",
-    "ios-production": "ENVFILE=.env.production react-native run-ios",
-    "android-production": "ENVFILE=.env.production react-native run-android",
+    "ios-dev": "ENVFILE=.env react-native run-ios --scheme \"rnscaffolddev\"",
+    "android-dev": "ENVFILE=.env react-native run-android --variant devDebug",
+    "ios-staging": "ENVFILE=.env.staging react-native run-ios --scheme \"rnscaffoldstaging\"",
+    "android-staging": "ENVFILE=.env.staging react-native run-android --variant stagingDebug",
+    "ios-production": "ENVFILE=.env.production react-native run-ios --scheme \"rnscaffoldproduction\"",
+    "android-production": "ENVFILE=.env.production react-native run-android --variant productionDebug",
+    "assemble-android-dev": "(cd android && SET ENVFILE=.env && ./gradlew assembledevDebug",
+    "assemble-android-staging": "(cd android && SET ENVFILE=.env.staging && ./gradlew assemblestagingDebug",
+    "assemble-android-production": "(cd android && SET ENVFILE=.env.production && ./gradlew assembleproductionRelease",
     "start": "react-native start",
-    "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {

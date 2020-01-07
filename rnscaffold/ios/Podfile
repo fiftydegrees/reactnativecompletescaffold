@@ -41,13 +41,3 @@ target 'rnscaffold' do
 
   use_native_modules!
 end
-
-target 'rnscaffold-tvOS' do
-  # Pods for rnscaffold-tvOS
-
-  target 'rnscaffold-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end
